@@ -1,0 +1,34 @@
+<content title="{{title}}">
+    <a class="btn btn-primary" ng-click="new()"
+    <i class="glyphicon glyphicon-plus"></i>
+    جدید
+    </a>
+
+    <grid readUrl="/api/categories"
+          columns="columns"
+          commands="commands"
+          option="gridOption">
+    </grid>
+
+    <modal options="modalOptions" title="{{modalOptions.title}}">
+        <modalbody>
+            <form form="name">
+                <div class="form-group" ng-class="{ 'has-error' : form.foodId.$invalid && !form.foodId.$pristine }">
+                    <label class="control-label" >{{'TITLE' | translate}}</label>
+                    <div>
+                        <input type="text" class="form-control" ng-model="category.title">
+                    </div>
+                    <p ng-show="form.foodId.$invalid && !form.foodId.$pristine">
+                        <span class="label label-danger">{{'TITLE IS REQUIRED' | translate}}</span>
+                    </p>
+                </div>
+            </form>
+        </modalbody>
+        <modalfooter>
+            <a class="btn btn-success" ng-click="save()" ng-disabled="form.$invalid">
+                <i class="glyphicon glyphicon-floppy-disk"></i>
+                {{'SAVE' | translate}}
+            </a>
+        </modalfooter>
+    </modal>
+</content>
