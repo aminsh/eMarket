@@ -7,8 +7,10 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+var env = process.env.NODE_ENV || 'development';
+console.log(__dirname);
+
+
 app.use(cookieParser())
 app.use(session({
     secret: 'keyboard cat',
@@ -18,31 +20,13 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.set('views', __dirname + '/server/views');
-app.engine('html', require('ejs').renderFile);
-app.use('/client', express.static(__dirname + '/client'));
-app.use('/content', express.static(__dirname + '/client/content'));
+
 
 var config = require('./server/config/config')[env];
 
 require('./server/config/express')(app , config);
 require('./server/config/mongoose')(config);
-
-app.get('/', function (req, res) {
-    res.render('./index.html');
-});
-
-// api routes definition
-app.use('/api', require('./server/routes/adApi')(app, express));
-app.use('/api', require('./server/routes/categoryApi')(app, express));
-app.use('/api', require('./server/routes/userApi')(app, express));
-app.param('id', function (req, res, next, id) {
-    console.log('id is : ' + id);
-    req.id  = id;
-    next();
-});
-
-
+require('./server/config/routes')(app);
 
 var User = require('./server/models/user');
 passport.use(new LocalStrategy(function (username, password, done) {
