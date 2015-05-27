@@ -24,7 +24,41 @@
                         <li class="active"><a href="#/aboutUs">درباره ما</a></li>
                         <li><a href="#/Category">مدیریت گروه بندی</a></li>
                         <li><a href="#/ad/create">ثبت آگهی</a></li>
+                        <li><a href="#/user/register">ثبت نام</a></li>
                     </ul>
+
+                    <p class="navbar-text navbar-left">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <span ng-if="auth.isAuth">
+                            <span>{{auth.user.firstName + ' ' + auth.user.lastName}}</span>
+                        </span>
+                        <span ng-if="!auth.isAuth">
+                            <a href="#/user/login"  >{{'LOGIN'|translate}}</a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Action</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Another action</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Something else here</a></li>
+                                <li role="presentation" class="divider"></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Separated link</a></li>
+                            </ul>
+                        </span>
+                    </p>
+
+                    <ul class="nav navbar-nav navbar-left">
+                        <li id="fat-menu" class="dropdown">
+                            <a id="drop3" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                                ورود به سیستم
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Action</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Another action</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Something else here</a></li>
+                                <li role="presentation" class="divider"></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Separated link</a></li>
+                            </ul>
+                        </li>
+                        </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>

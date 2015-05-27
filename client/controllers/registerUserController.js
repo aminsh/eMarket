@@ -1,21 +1,24 @@
-define(['app', 'service/rest/userService'], function (app) {
-    app.register.controller('registerUserController', function ($scope, userService) {
-        $scope.title = 'ËÈÊ äÇã';
-
+define(['app',
+    'service/rest/userService',
+], function (app) {
+    app.register.controller('registerUserController', function ($scope, userService, $location) {
+        $scope.title = 'Ø«Ø¨Øª Ù†Ø§Ù…';
         $scope.user = {
             firstName: '',
             lastName: '',
-            username: ''
+            username: '',
+            password: '',
+            confirmPassword: ''
         };
 
         $scope.save = function () {
             userService.post($scope.user)
                 .then(function (result) {
                     debugger;
-                })
-                .catch(function (err) {
-                    debugger;
+                    //$location.path('OrderFoods/Edit/'+ result.Id);
+                }).catch(function (error) {
+
                 });
         }
     });
-})
+});

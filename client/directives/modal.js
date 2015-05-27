@@ -1,5 +1,5 @@
 define(['app'],function(app){
-    app.register.directive('modal',function(){
+    (app.register || app).directive('modal',function(){
         return{
             restrict: 'E',
             replace: true,
@@ -43,7 +43,7 @@ define(['app'],function(app){
         }
     });
 
-    app.register.directive('modalbody',function(){
+    (app.register || app).directive('modalbody',function(){
         return{
             restrict: 'E',
             replace: true,
@@ -52,7 +52,7 @@ define(['app'],function(app){
         }
     });
 
-    app.register.directive('modalfooter',function(){
+    (app.register || app).directive('modalfooter',function(){
         return{
             restrict: 'E',
             replace: true,

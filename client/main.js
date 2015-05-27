@@ -15,6 +15,8 @@
         'helper-window': 'lib/helper/helper.window',
         'helper_array': 'lib/helper/helper.array',
         'bootstrap': 'lib/external/bootstrap-rtl',
+        'ui-bootstrap': 'lib/external/ui-bootstrap.min',
+        'ui-bootstrap-tpls': 'lib/external/ui-bootstrap-tpls.min',
         'domReady': 'lib/helper/domReady',
         'kendo': 'lib/external/kendo.all.min',
         'date-fa-Ir': 'lib/external/datetools/fa-IR',
@@ -23,7 +25,10 @@
         'date-calendar': 'lib/external/datetools/kendo.calendar',
         'date-datepicker': 'lib/external/datetools/kendo.datepicker',
         'date-popup': 'lib/external/datetools/kendo.popup',
-        'ocModal': 'lib/external/ocModal'
+        'toastr': 'lib/external/toastr.min',
+
+        'logger': 'service/logger',
+        'confirm': 'service/confirm'
     },
     shim: {
         'jQuery': {
@@ -49,14 +54,15 @@
             deps: ['angular'],
             exports: 'angular-sanitize'
         },
-        'angular-translate':{
+        'angular-translate': {
             deps: ['angular'],
             exports: 'angular-translate'
         },
         'bootstrap': {
-          exports: 'bootstrap',
-          deps: ['jQuery']
+            exports: 'bootstrap',
+            deps: ['jQuery']
         },
+        'ui-bootstrap-tpls': {exports: 'ui-bootstrap-tpls', deps: ['angular']},
         'linq': {exports: 'linq'},
         'helper-window': {deps: ['jQuery'], exports: 'helper-window'},
         'helper_array': {
@@ -75,38 +81,38 @@
             exports: 'domReady',
             deps: ['jQuery']
         },
-        'kendo':{exports: 'kendo', deps:['jQuery']},
+        'kendo': {exports: 'kendo', deps: ['jQuery']},
         'date-JalaliDate': {exports: 'date-JalaliDate'},
-        'date-core':{exports: 'date-core'},
+        'date-core': {exports: 'date-core'},
         'date-calendar': {exports: 'date-calendar', deps: ['date-core']},
         'date-popup': {exports: 'date-popup', deps: ['date-core']},
-        'date-datepicker': {exports: 'date-datepicker', deps: ['date-calendar','date-popup']},
-        'date-fa-Ir': {exports: 'date-fa-Ir', deps: ['date-calendar','date-JalaliDate' ]}
+        'date-datepicker': {exports: 'date-datepicker', deps: ['date-calendar', 'date-popup']},
+        'date-fa-Ir': {exports: 'date-fa-Ir', deps: ['date-calendar', 'date-JalaliDate']},
+        'toastr': {exports: 'toastr', deps: ['jQuery']},
+        'logger': {exports: 'logger', deps: ['toastr']},
+        'confrm': {exports: 'conform', deps: ['ui-bootstrap-tpls']}
 
     }
 });
 
 require([
-    'angular-animate',
-    'angular-route',
-    'angular-resource',
-    'angular-sanitize',
-    'angular-translate',
-    'helper-window',
-    'helper_array',
-    'app',
-    'config.route',
-    'config.translate',
-    'controllers/shellController',
-    'bootstrap',
-    'directives/content',
-    'directives/numeric',
-//    'kendo',
-    'domReady!'
-],
-function() {
-    angular.bootstrap(document, ['app']);
-
-    var app = angular.module('app');
-    app.register.controller('shell', controllers.shellController);
-});
+        'angular-animate',
+        'angular-route',
+        'angular-resource',
+        'angular-sanitize',
+        'angular-translate',
+        'helper-window',
+        'helper_array',
+        'app',
+        'config.route',
+        'config.translate',
+        'controllers/shellController',
+        'directives/content',
+        'directives/numeric',
+        'logger',
+        'confirm',
+        'domReady!'
+    ],
+    function () {
+        angular.bootstrap(document, ['app']);
+    });

@@ -17,7 +17,8 @@
                 {url: '/ad/create', name: 'createAd', title: ''},
                 {url: '/ad/edit/:id', name: 'editAd', title: ''},
                 {url: '/ad/success/:id', name: 'successAd', title: ''},
-                {url: '/user/register', name: 'registerUser', title: ''}
+                {url: '/user/register', name: 'registerUser', title: ''},
+                {url: '/user/login', name: 'loginUser', title: ''}
             ];
 
             var route = routeResolveProvider.route;

@@ -27,30 +27,11 @@ var config = require('./server/config/config')[env];
 require('./server/config/express')(app , config);
 require('./server/config/mongoose')(config);
 require('./server/config/routes')(app);
+require('./server/config/auth').configure();
 
-var User = require('./server/models/user');
-passport.use(new LocalStrategy(function (username, password, done) {
-    User.findOne({username: username}).exec(function (err, user) {
-        if (user) return done(null, user);
-        if (!user) return done(null, false);
-    });
-}));
+app.listen(config.port);
 
-
-passport.serializeUser(function (user, done) {
-    if (user)
-        done(null, user._id);
-});
-
-passport.deserializeUser(function (id, done) {
-    console.log('id:' + id);
-    User.findById(id).exec(function (err, user) {
-        if (user)
-            done(null, user);
-        else
-            done(null, false);
-    });
-});
+console.log('Port ' + config.port + ' is listening ...');
 
 /*app.post('/login', function(req, res, next){
  var auth  = passport.authenticate('local', function(err, user){
@@ -65,10 +46,6 @@ passport.deserializeUser(function (id, done) {
  auth(req, res, next);
  });*/
 
-app.post('/login',
-    passport.authenticate('local', { successRedirect: '/',
-        failureRedirect: '/login' }));
 
-app.listen(config.port);
 
-console.log('Port ' + config.port + ' is listening ...');
+

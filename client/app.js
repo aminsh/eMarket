@@ -1,24 +1,14 @@
-﻿define(['service/routeResolver','ocModal'
-    //'controllers/shell'
-], function() {
+﻿define(['service/routeResolver', 'ui-bootstrap-tpls'], function() {
     var app = angular.module('app', [
         'ngAnimate',
         'ngRoute',
         'ngResource',
         'ngSanitize',
+        'ui.bootstrap',
         'routeResolverService',
-        'pascalprecht.translate',
-        'oc.modal'
+        'pascalprecht.translate'
     ]);
 
-    app.controller('TestCtrl', ['$scope', '$ocModal', '$timeout', function($scope, $ocModal, $timeout) {
-        $timeout(function() {
-            if($ocModal.getOpenedModals().indexOf('tempModal') !== -1) {
-                $ocModal.close('tempModal', 'var a', 'var b');
-            }
-        }, 5000);
-    }]);
-    
     app.run(['$route', '$rootScope', '$location', function ($route, $rootScope, $location) {
         $rootScope.$on('$routeChangeStart', function (evt, next, current) {
             //debugger;
