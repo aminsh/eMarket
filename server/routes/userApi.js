@@ -30,6 +30,12 @@ module.exports = function (app, express) {
 
     apiRouter.route('/users/login').post(auth.authenticate);
 
+    apiRouter.route('/users/logout').post(function(req, res){
+        if (req.isAuthenticated())
+            req.logout();
+        res.send({success: true});
+    });
+
     apiRouter.route('/users/current').get(function (req, res) {
         if (req.isAuthenticated())
             res.send({isAuthenticated: true, user: req.user});

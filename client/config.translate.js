@@ -37,7 +37,9 @@ define(['app'],function(app){
             'QTY IS REQUIRED': 'مقدار اجباری است',
             'PRICE IS REQUIRED': 'قیمت اجباری است',
 
-            'CLOSE': 'بستن'
+            'CLOSE': 'بستن',
+
+            'DONE SUCCESS': 'عملیات با موفقیت انجام شد'
 
         });
 

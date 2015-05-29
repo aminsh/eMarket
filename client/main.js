@@ -101,16 +101,21 @@ require([
         'angular-resource',
         'angular-sanitize',
         'angular-translate',
+        'bootstrap',
         'helper-window',
         'helper_array',
         'app',
         'config.route',
         'config.translate',
         'controllers/shellController',
+
         'directives/content',
         'directives/numeric',
+
         'logger',
         'confirm',
+        'service/translate',
+
         'domReady!'
     ],
     function () {

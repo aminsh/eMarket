@@ -1,5 +1,5 @@
-        var bodyParser = require('body-parser');
-        var ad = require('../models/ad');
+var bodyParser = require('body-parser');
+var ad = require('../models/ad');
 
 
 module.exports = function (app, express) {
@@ -12,6 +12,11 @@ module.exports = function (app, express) {
             });
         })
         .post(function (req, res) {
+            if (!req.isAuthenticated()){
+                res.status(401).send('Access Deny');
+                return;
+            }
+
             var cmd = req.body;
 
             var newAd = new ad({
@@ -21,12 +26,13 @@ module.exports = function (app, express) {
                 des: cmd.des,
                 category: cmd.category,
                 phone: cmd.phone,
-                email: cmd.email
+                email: cmd.email,
+                user: req.user
             });
 
             newAd.save(function (err) {
                 if (err) console.error(err);
-                res.json({success: true , ad: newAd});
+                res.json({success: true, ad: newAd});
             });
         });
 
@@ -40,7 +46,7 @@ module.exports = function (app, express) {
             var id = req.params.id;
             var cmd = req.body;
 
-            ad.findById(req.params.id).exec(function (err,item) {
+            ad.findById(req.params.id).exec(function (err, item) {
                 item.title = cmd.title;
                 item.price = cmd.price;
                 item.image = cmd.image;
@@ -49,13 +55,13 @@ module.exports = function (app, express) {
                 item.email = cmd.email;
                 item.category = cmd.category;
 
-                item.save(function(err){
-                    if(err){
+                item.save(function (err) {
+                    if (err) {
                         console.error(err);
                         res.json({success: false});
                     }
 
-                    res.json({success: true , ad: item});
+                    res.json({success: true, ad: item});
                 });
             });
         })

@@ -65,6 +65,19 @@ define(['app'],function(app){
                     });
 
                 return deferred.promise;
+            },
+            logout: function () {
+                var deferred = $q.defer();
+
+                $http.post('/api/users/logout')
+                    .success(function(result){
+                        deferred.resolve(result);
+                    })
+                    .error(function(error){
+                        deferred.reject(error);
+                    });
+
+                return deferred.promise;
             }
         }
     });

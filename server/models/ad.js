@@ -11,7 +11,8 @@ var adSchema = new Schema({
         title: String
     },
     phone: String,
-    email: String
+    email: String,
+    user: {}
 });
 
 module.exports = mongoose.model('ad', adSchema);
