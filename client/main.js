@@ -27,6 +27,10 @@
         'date-popup': 'lib/external/datetools/kendo.popup',
         'toastr': 'lib/external/toastr.min',
 
+        'calendar': 'lib/external/calendar.min',
+        'jquery-Bootstrap-PersianDateTimePicker': 'lib/external/jquery.Bootstrap-PersianDateTimePicker.min',
+        'plupload': 'lib/external/plupload.full.min',
+
         'logger': 'service/logger',
         'confirm': 'service/confirm'
     },
@@ -90,8 +94,10 @@
         'date-fa-Ir': {exports: 'date-fa-Ir', deps: ['date-calendar', 'date-JalaliDate']},
         'toastr': {exports: 'toastr', deps: ['jQuery']},
         'logger': {exports: 'logger', deps: ['toastr']},
-        'confrm': {exports: 'conform', deps: ['ui-bootstrap-tpls']}
+        'confrm': {exports: 'conform', deps: ['ui-bootstrap-tpls']},
+        'jquery-Bootstrap-PersianDateTimePicker': { exports: 'jquery-Bootstrap-PersianDateTimePicker', deps: ['bootstrap', 'calendar'] },
 
+        'plupload': {exports: 'plupload', deps: ['jQuery']}
     }
 });
 
@@ -116,6 +122,7 @@ require([
         'confirm',
         'service/translate',
 
+        'jquery-Bootstrap-PersianDateTimePicker',
         'domReady!'
     ],
     function () {

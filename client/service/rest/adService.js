@@ -63,6 +63,19 @@ define(['app'],function(app){
                     .error(function(){
                         deferred.reject(error);
                     });
+            },
+            getMyAds: function(){
+                var deferred = $q.defer();
+
+                $http.get('/api/users/me/ads')
+                    .success(function(data){
+                        deferred.resolve(data);
+                    })
+                    .error(function(error){
+                        deferred.reject(error);
+                    });
+
+                return deferred.promise;
             }
         }
     });

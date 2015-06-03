@@ -12,7 +12,7 @@ module.exports = function (app, express) {
             });
         })
         .post(function (req, res) {
-            if (!req.isAuthenticated()){
+            if (!req.isAuthenticated()) {
                 res.status(401).send('Access Deny');
                 return;
             }
@@ -65,6 +65,24 @@ module.exports = function (app, express) {
                 });
             });
         })
+
+    apiRouter.route('/users/me/ads')
+        .get(function (req, res) {
+            if (!req.isAuthenticated()) {
+                res.status(401).send('Access Deny');
+                return;
+            }
+
+            ad.find({'user._id': req.user._id}).exec(function (err, ads) {
+                if (err)
+                    res.send({err: err});
+
+                console.log('ads: ');
+                console.log(ads);
+
+                res.json(ads);
+            });
+        });
 
     return apiRouter;
 }

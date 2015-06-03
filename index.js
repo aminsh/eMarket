@@ -1,14 +1,13 @@
 var express = require('express');
 var app = express();
-var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-var mongoose = require('mongoose');
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+
 
 var env = process.env.NODE_ENV || 'development';
 console.log(__dirname);
+
 
 
 app.use(cookieParser())
@@ -29,6 +28,18 @@ require('./server/config/mongoose')(config);
 require('./server/config/routes')(app);
 require('./server/config/auth').configure();
 
+
+app.post('/upload', function (req, res) {
+    if(req.files){
+        console.log('file is ...');
+        console.log(req.files);
+        res.send('file is ...');
+    }
+    else{
+        console.log('file is not ...');
+        res.send('file is not ...');
+    }
+});
 app.listen(config.port);
 
 console.log('Port ' + config.port + ' is listening ...');

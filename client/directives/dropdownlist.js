@@ -8,7 +8,8 @@ define(['app'],function(app){
                 valueprop: '@',
                 displayprop: '@',
                 model: '=',
-                data: '='
+                data: '=',
+                width: '@'
             },
             link: function(scope, element, attrs){
 
@@ -34,7 +35,12 @@ define(['app'],function(app){
                             }
                         }
                     };
-                var dropdown = $(element).kendoDropDownList({
+
+                var input = $(element);
+                input.css('width', attrs.width);
+                input.css('display', 'block');
+
+                var dropdown = input.kendoDropDownList({
                     dataTextField: attrs.displayprop,
                     dataValueField: attrs.valueprop,
                     filter: "contains",

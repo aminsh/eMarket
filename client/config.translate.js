@@ -39,7 +39,9 @@ define(['app'],function(app){
 
             'CLOSE': 'بستن',
 
-            'DONE SUCCESS': 'عملیات با موفقیت انجام شد'
+            'DONE SUCCESS': 'عملیات با موفقیت انجام شد',
+            'TO UPLOAD DRAG FILE HERE': 'برای آپلود فایل خود را به این قسمت بکشید',
+            'UPDATE IMAGE': 'انتخاب عکس'
 
         });
 

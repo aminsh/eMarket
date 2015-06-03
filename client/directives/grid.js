@@ -1,37 +1,41 @@
-define(['app', 'kendo'], function(app){
-    app.register.directive('grid', function(){
+define(['app', 'kendo'], function (app) {
+    app.register.directive('grid', function () {
         return {
             restrict: 'E',
             template: '<div></div>',
-            scope:{
+            scope: {
                 option: '=',
                 readUrl: '@',
                 pageSize: '=',
                 columns: '=',
-                commands: '='
+                commands: '=',
+                commandTemplate: '='
             },
-            link: function(scope, element , attrs){
-               var cols = scope.columns.select(function(col){
-                   return {
-                       field: col.name,
-                       title: col.title,
-                       width: col.width,
-                       format: col.format,
-                       template: col.template
-                   }
-               });
+            link: function (scope, element, attrs) {
+                var cols = scope.columns.select(function (col) {
+                    return {
+                        field: col.name,
+                        title: col.title,
+                        width: col.width,
+                        format: col.format,
+                        template: col.template
+                    }
+                });
 
-               var commands = scope.commands.select(function(cmd){
-                    return  {
+                var commands = scope.commands.select(function (cmd) {
+                    return {
                         text: cmd.title,
                         imageClass: cmd.imageClass,
-                        click: function(e){
+                        click: function (e) {
                             var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
                             cmd.action(dataItem);
                             e.preventDefault();
                         }
                     };
                 });
+
+                if (scope.commandTemplate)
+                    cols.push({template: kendo.template($(scope.commandTemplate.template).html())});
 
                 cols.push({command: commands});
 
@@ -53,8 +57,8 @@ define(['app', 'kendo'], function(app){
                             total: "Total",
                             model: {
                                 fields: {
-                                    price: { type: "number" },
-                                    title: { type: "string" }
+                                    price: {type: "number"},
+                                    title: {type: "string"}
                                 }
                             }
                         },
@@ -69,8 +73,17 @@ define(['app', 'kendo'], function(app){
                     columns: cols
                 }).data("kendoGrid");
 
-                if(!isNullOrEmpty(scope.option))
-                    scope.option.refresh = function(){
+
+                if (scope.commandTemplate)
+                    scope.commandTemplate.commands.forEach(function (cmd) {
+                        $(element).on("click", cmd.selector, function (e) {
+                            var dataItem = grid.dataItem($(e.currentTarget).closest("tr"));
+                            cmd.action(dataItem);
+                        });
+                    });
+
+                if (!isNullOrEmpty(scope.option))
+                    scope.option.refresh = function () {
                         grid.dataSource.read();
                     };
             }
