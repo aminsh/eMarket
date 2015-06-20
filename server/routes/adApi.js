@@ -80,8 +80,31 @@ module.exports = function (app, express) {
                 console.log('ads: ');
                 console.log(ads);
 
-                res.json(ads);
+                res.json({Data: ads});
             });
+        });
+
+    apiRouter.route('/searchAds')
+        .get(function (req, res) {
+            console.log(req.query);
+            var page = req.query.page;
+            if (!page) page = 1;
+
+            var searchData = {};
+
+            if (req.query.categoryId)
+                searchData['category._id'] = req.query.categoryId;
+
+            ad.find(searchData)
+                .limit(10)
+                .skip((page - 1) * 10)
+                .exec(function (err, ads) {
+                    if (err) {
+                        res.status(500).send('db retrieve error');
+                        return;
+                    }
+                    res.json(ads);
+                });
         });
 
     return apiRouter;

@@ -12,7 +12,8 @@ define(['app', 'kendo'], function (app) {
                 commandTemplate: '='
             },
             link: function (scope, element, attrs) {
-                var cols = scope.columns.select(function (col) {
+                var cols = scope.columns
+                    .toEnumerable().select(function (col) {
                     return {
                         field: col.name,
                         title: col.title,
@@ -22,7 +23,8 @@ define(['app', 'kendo'], function (app) {
                     }
                 });
 
-                var commands = scope.commands.select(function (cmd) {
+                var commands = scope.commands.
+                    toEnumerable().select(function (cmd) {
                     return {
                         text: cmd.title,
                         imageClass: cmd.imageClass,
@@ -72,7 +74,6 @@ define(['app', 'kendo'], function (app) {
                     sortable: true,
                     columns: cols
                 }).data("kendoGrid");
-
 
                 if (scope.commandTemplate)
                     scope.commandTemplate.commands.forEach(function (cmd) {

@@ -5,6 +5,7 @@ define(['app'],function(app){
             'NEW': 'جدید',
             'REMOVE': 'حذف',
             'SHOW': 'نمایش',
+            'EDIT': 'ویرایش',
             'NEW PRODUCT': 'محصول جدید',
             'TITLE': 'عنوان',
             'PRICE': 'قیمت',
@@ -24,6 +25,7 @@ define(['app'],function(app){
             'PHONE': 'تلفن',
             'EMAIL': 'پست الکترونیکی',
             'LOGIN': 'ورود به سایت',
+            'IMAGE': 'تصویر',
 
             'NAME IS REQUIRED': 'نام اجباری است',
             'FIRSTNAME IS REQUIRED': 'نام اجباری است',
@@ -41,7 +43,15 @@ define(['app'],function(app){
 
             'DONE SUCCESS': 'عملیات با موفقیت انجام شد',
             'TO UPLOAD DRAG FILE HERE': 'برای آپلود فایل خود را به این قسمت بکشید',
-            'UPDATE IMAGE': 'انتخاب عکس'
+            'UPDATE IMAGE': 'انتخاب عکس',
+            'REMOVE AD': 'حذف آگهی',
+            'CONFIRM MESSAGE': 'آیا مایل به ادامه عملیات هستید',
+            'NO MORE DATA': 'اطلاعات بیشتری یافت نشد',
+            'LOADING NEXT PAGE': 'در حال بارگزاری صفحه بعدی',
+
+            'MY ADS PAGE TITLE': 'آگهی های من',
+            'ADS LIST': 'لیست آگهی ها'
+
 
         });
 

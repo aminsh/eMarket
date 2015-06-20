@@ -27,10 +27,14 @@
         'date-popup': 'lib/external/datetools/kendo.popup',
         'toastr': 'lib/external/toastr.min',
 
-        'calendar': 'lib/external/calendar.min',
-        'jquery-Bootstrap-PersianDateTimePicker': 'lib/external/jquery.Bootstrap-PersianDateTimePicker.min',
-        'plupload': 'lib/external/plupload.full.min',
+        'calendar': 'lib/external/calendar',
+        'jquery-Bootstrap-PersianDateTimePicker': 'lib/external/jquery.Bootstrap-PersianDateTimePicker',
 
+        'persian-date': 'lib/external/persian-date/persian-date-0.1.8.min',
+        'persian-datepicker': 'lib/external/persian-date/persian-datepicker-0.4.5.min',
+
+        'plupload': 'lib/external/plupload.full.min',
+        'inifinitescroll': 'lib/external/jquery.infinitescroll',
         'logger': 'service/logger',
         'confirm': 'service/confirm'
     },
@@ -95,9 +99,14 @@
         'toastr': {exports: 'toastr', deps: ['jQuery']},
         'logger': {exports: 'logger', deps: ['toastr']},
         'confrm': {exports: 'conform', deps: ['ui-bootstrap-tpls']},
+
+        'persian-date': {exports: 'persian-date', deps: ['jQuery']},
+        'persian-datepicker': {exports: 'persian-datepicker', deps: ['persian-date']},
+
         'jquery-Bootstrap-PersianDateTimePicker': { exports: 'jquery-Bootstrap-PersianDateTimePicker', deps: ['bootstrap', 'calendar'] },
 
-        'plupload': {exports: 'plupload', deps: ['jQuery']}
+        'plupload': {exports: 'plupload', deps: ['jQuery']},
+        'inifinitescroll': {exports: 'inifinitescroll', deps: ['jQuery']}
     }
 });
 

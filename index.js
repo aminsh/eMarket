@@ -44,6 +44,8 @@ app.listen(config.port);
 
 console.log('Port ' + config.port + ' is listening ...');
 
+console.log('http://localhost:'+ config.port +'/');
+
 
 
 

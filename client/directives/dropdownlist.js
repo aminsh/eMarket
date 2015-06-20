@@ -30,7 +30,6 @@ define(['app'],function(app){
                         },
                         schema:{
                             parse: function(response){
-                                debugger;
                                 return response.Data;
                             }
                         }
