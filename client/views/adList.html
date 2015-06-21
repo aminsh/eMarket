@@ -1,0 +1,26 @@
+<content title="{{title}}">
+
+    <dropdownlist url="/api/categories" valueprop="_id" displayprop="title" placeholder="..."
+                  model="param.categoryId"  width="400px" required ></dropdownlist>
+
+    <inifinitescroll query="query(index)" response="response(result)">
+        <div class="row" ng-repeat="ad in ads" style="background-color: ghostwhite;margin-top: 5px">
+            <div class="col-md-3">
+                <img ng-src="{{ad.image}}" style="width: 150px;height: 100px">
+            </div>
+            <div>
+                <h5>{{ad.title}}</h5>
+            <span>
+                <a class="btn btn-primary" href="#/ad/show/{{ad._id}}">
+                    <i class="glyphicon glyphicon-expand"></i>
+                    {{'SHOW'|translate}}
+                </a>
+            </span>
+            <span class="pull-left">
+                قیمت :
+                {{ad.price}}
+            </span>
+            </div>
+        </div>
+    </inifinitescroll>
+</content>

@@ -1,0 +1,36 @@
+<content title="{{'LOGIN' | translate}}">
+    <form name="form">
+
+        <div class="alert alert-danger" role="alert" ng-if="errorMessage != ''">
+            {{errorMessage}}
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error' : form.username.$invalid && !form.username.$pristine }">
+            <label class="control-label">{{'USERNAME' | translate}}</label>
+
+            <div>
+                <input type="text" class="form-control" ng-model="user.username" name="username">
+            </div>
+            <p ng-show="form.username.$invalid && !form.username.$pristine">
+                <span class="label label-danger">{{'USERNAME IS REQUIRED' | translate}}</span>
+            </p>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error' : form.password.$invalid && !form.password.$pristine }">
+            <label class="control-label">{{'PASSWORD' | translate}}</label>
+
+            <div>
+                <input type="password" class="form-control" ng-model="user.password" name="password">
+            </div>
+            <p ng-show="form.password.$invalid && !form.password.$pristine">
+                <span class="label label-danger">{{'PASSWORD IS REQUIRED' | translate}}</span>
+            </p>
+        </div>
+
+        <a class="btn btn-success" ng-click="login(form)" ng-disabled="form.$invalid">
+            <i class="glyphicon glyphicon-log-in"></i>
+            {{'LOGIN' | translate}}
+        </a>
+
+    </form>
+</content>
