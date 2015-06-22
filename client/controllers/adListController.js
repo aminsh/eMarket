@@ -2,14 +2,14 @@ define(['app',
     'service/rest/adService',
     'directives/inifinitescroll',
     'directives/dropdownlist',], function (app) {
-    app.register.controller('adListController', function ($scope, adService , translate) {
+    app.register.controller('adListController', function ($scope, adService , translate , $routeParams) {
 
         $scope.title = translate('ADS LIST');
 
         $scope.ads = [];
 
         $scope.param = {
-            categoryId: ''
+            categoryId: $routeParams.categoryId ? $routeParams.categoryId : ''
         };
 
         $scope.$watch('param.categoryId', function (newValue) {

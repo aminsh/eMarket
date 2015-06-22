@@ -15,7 +15,7 @@
                 {url: '/', name: 'home', title: ''},
                 {url: '/aboutUs', name: 'aboutUs', title: ''},
                 {url: '/Category', name: 'categoryList', title: ''},
-                {url: '/ad', name: 'adList', title: ''},
+                {url: '/ad/:categoryId?', name: 'adList', title: ''},
                 {url: '/ad/show/:id', name: 'adShow', title: ''},
                 {url: '/ad/create', name: 'adCreate', title: ''},
                 {url: '/ad/edit/:id', name: 'adEdit', title: ''},
