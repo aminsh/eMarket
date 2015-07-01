@@ -3,12 +3,13 @@ var app = express();
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
-
+var favicon = require('serve-favicon');
 
 var env = process.env.NODE_ENV || 'development';
-console.log(__dirname);
 
+app.use(favicon(__dirname + '/server/views/favicon.ico'));
 
+console.log(__dirname + '/server/views/favicon.ico');
 
 app.use(cookieParser())
 app.use(session({

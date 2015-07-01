@@ -73,7 +73,7 @@ module.exports = function (app, express) {
                 return;
             }
 
-            ad.find({'user._id': req.user._id}).exec(function (err, ads) {
+            ad.find({'user._id': req.user._id.toString()}).exec(function (err, ads) {
                 if (err)
                     res.send({err: err});
 

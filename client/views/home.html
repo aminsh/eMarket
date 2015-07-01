@@ -1,12 +1,12 @@
 ﻿<content title="{{title}}">
     <div class="row">
         <div class="col-xs-6 col-md-3">
-            <a href="#/ad" class="thumbnail" style="    font-size: 100px;">
+            <a href="#/ads" class="thumbnail" style="    font-size: 100px;">
                 <img src="content/images/advertising.png">
             </a>
         </div>
         <div class="col-xs-6 col-md-3" ng-repeat="cat in categories">
-            <a href="#/ad/{{cat.id}}" class="thumbnail" style="    font-size: 100px;" title="{{cat.title}}">
+            <a href="#/ads/{{cat.id}}" class="thumbnail" style="    font-size: 100px;" title="{{cat.title}}">
                 <img src="{{'content/images/category/'+ cat.icon}}">
             </a>
         </div>

@@ -4,6 +4,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
 var multer = require('multer');
+var favicon = require('serve-favicon');
 
 module.exports = function (app, config) {
     app.use(bodyParser.urlencoded({extended: false}));
@@ -23,5 +24,5 @@ module.exports = function (app, config) {
     app.use('/content', express.static(config.rootPath + '/client/content'));
     app.use('/uploads', express.static(config.rootPath + '/uploads'));
 
-    app.use(multer({dest: './uploads/;'}))
+    app.use(multer({dest: './uploads/;'}));
 }
